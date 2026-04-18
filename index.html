@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>الهدف السابع: طاقة نظيفة وبأسعار معقولة | اختبار تفاعلي</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #e0f2e9 0%, #d4eafc 100%);
+            color: #1e2a3e;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #cbd5e1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: #2c7a4d; border-radius: 10px; }
+
+        /* header */
+        .header {
+            background: linear-gradient(95deg, #0a2e22, #1b4d3e);
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+        }
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.6rem;
+            font-weight: 800;
+        }
+        .logo i { font-size: 2rem; color: #facc15; }
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: #f1f9f0;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .nav-links a:hover { color: #facc15; transform: translateY(-2px); }
+        .test-btn-header {
+            background: #facc15;
+            color: #0a2e22;
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-weight: bold;
+            font-family: 'Cairo', sans-serif;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+        .test-btn-header:hover {
+            background: #ffdf4a;
+            transform: scale(1.02);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        .hero {
+            background: white;
+            border-radius: 2rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            border-bottom: 6px solid #2c7a4d;
+        }
+        .hero h1 { font-size: 2.5rem; color: #14532d; }
+        .goal-badge {
+            background: #14532d;
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            color: white;
+            margin-top: 1rem;
+        }
+        .section-title {
+            font-size: 1.9rem;
+            font-weight: 700;
+            margin: 2rem 0 1rem 0;
+            border-right: 7px solid #2c7a4d;
+            padding-right: 1rem;
+        }
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .card:hover { transform: translateY(-6px); }
+        .impact-table {
+            background: white;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            margin: 1.5rem 0;
+        }
+        .impact-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .impact-table th {
+            background: #1f5e3a;
+            color: white;
+            padding: 1rem;
+        }
+        .impact-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #d1e0d6;
+        }
+        .steps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .step-item {
+            background: white;
+            border-radius: 1.2rem;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            border-right: 5px solid #facc15;
+        }
+        .step-number {
+            background: #0f3b2c;
+            color: white;
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 60px;
+            font-weight: bold;
+        }
+        .step-text { flex: 1; font-weight: 500; }
+        .step-btn {
+            background: #eef4f0;
+            border: none;
+            padding: 0.4rem 1rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 600;
+        }
+        .step-btn:hover { background: #2c7a4d; color: white; }
+        .extra-info {
+            width: 100%;
+            background: #fef9e6;
+            padding: 0.8rem;
+            border-radius: 1rem;
+            display: none;
+        }
+        .callout {
+            background: #14532d;
+            color: white;
+            padding: 2rem;
+            border-radius: 2rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        footer {
+            background: #0a2e22;
+            color: #cbd5c3;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        /* Modal style */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 600px;
+            max-height: 85vh;
+            border-radius: 2rem;
+            padding: 1.8rem;
+            overflow-y: auto;
+            direction: rtl;
+        }
+        .modal-content h2 { color: #14532d; margin-bottom: 1rem; }
+        .question { margin-bottom: 1.2rem; border-bottom: 1px solid #ddd; padding-bottom: 0.8rem; }
+        .question p { font-weight: bold; margin-bottom: 0.5rem; }
+        .options label { display: block; margin: 0.3rem 0; cursor: pointer; }
+        .quiz-result {
+            background: #eef4ea;
+            padding: 1rem;
+            border-radius: 1rem;
+            margin: 1rem 0;
+        }
+        .progress-bar {
+            background: #ddd;
+            border-radius: 30px;
+            height: 20px;
+            overflow: hidden;
+            margin: 0.5rem 0;
+        }
+        .progress-fill {
+            background: #2c7a4d;
+            width: 0%;
+            height: 100%;
+            border-radius: 30px;
+        }
+        .close-modal {
+            background: #9e2d2f;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            float: left;
+        }
+        .submit-quiz {
+            background: #14532d;
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 2rem;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        @media (max-width: 750px) {
+            .hero h1 { font-size: 1.8rem; }
+            .step-item { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="nav-container">
+        <div class="logo"><i class="fas fa-solar-panel"></i><span>SDG 7 | طاقة نظيفة</span></div>
+        <div style="display: flex; gap: 15px; align-items: center;">
+            <div class="nav-links">
+                <a href="#info">معلومات</a>
+                <a href="#environment">التأثير البيئي</a>
+                <a href="#steps">خطوات</a>
+            </div>
+            <button class="test-btn-header" id="openQuizBtn"><i class="fas fa-clipboard-list"></i> ابدأ الاختبار</button>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="hero">
+        <h1><i class="fas fa-bolt"></i> طاقة نظيفة وبأسعار معقولة</h1>
+        <p>ضمان حصول الجميع على طاقة حديثة وموثوقة ومستدامة بحلول 2030.</p>
+        <div class="goal-badge"><i class="fas fa-leaf"></i> الهدف السابع من أهداف التنمية المستدامة</div>
+    </div>
+
+    <div id="info">
+        <div class="section-title"><i class="fas fa-info-circle"></i> معلومات أساسية</div>
+        <div class="grid-cards">
+            <div class="card"><div class="card-icon"><i class="fas fa-calendar-alt"></i></div><h3>تاريخ الاستحقاق</h3><p>عام 2030، ضمن خطة تحويل عالمنا.</p></div>
+            <div class="card"><div class="card-icon"><i class="fas fa-chart-line"></i></div><h3>المؤشرات</h3><p>زيادة الطاقة المتجددة، مضاعفة كفاءة الطاقة، توفير الكهرباء للجميع.</p></div>
+            <div class="card"><div class="card-icon"><i class="fas fa-globe-asia"></i></div><h3>التحدي</h3><p>733 مليون شخص بدون كهرباء، الطاقة النظيفة هي الحل.</p></div>
+        </div>
+    </div>
+
+    <div id="environment">
+        <div class="section-title"><i class="fas fa-seedling"></i> التأثير الإيجابي على البيئة</div>
+        <div class="impact-table">
+            <table>
+                <thead><tr><th>المشكلة البيئية</th><th>كيف يحلها الهدف السابع</th></tr></thead>
+                <tbody>
+                    <tr><td>🔴 الاحتباس الحراري</td><td>يقلل انبعاثات CO₂</td></tr>
+                    <tr><td>💨 تلوث الهواء</td><td>يلغي العوادم السامة</td></tr>
+                    <tr><td>💧 ندرة المياه</td><td>يستهلك مياه أقل بكثير</td></tr>
+                    <tr><td>⚠️ النفايات السامة</td><td>لا مخلفات خطيرة</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="steps">
+        <div class="section-title"><i class="fas fa-users"></i> خطوات لكل فرد</div>
+        <div class="steps-list" id="stepsList"></div>
+        <div class="callout">
+            <i class="fas fa-hand-holding-heart"></i>
+            <h3>معًا نصنع التغيير</h3>
+            <p>كل خطوة صغيرة تقوم بها تساهم في مستقبل أنظف.</p>
+        </div>
+    </div>
+</div>
+<footer>
+    <p><i class="fas fa-solar-panel"></i> الهدف السابع: طاقة نظيفة وبأسعار معقولة — من أجل الناس والكوكب.</p>
+</footer>
+
+<!-- Modal للاختبار -->
+<div id="quizModal" class="modal">
+    <div class="modal-content">
+        <button class="close-modal" id="closeModalBtn">✖ إغلاق</button>
+        <h2><i class="fas fa-question-circle"></i> اختبار: ما مدى مساهمتك في تحقيق الهدف السابع؟</h2>
+        <form id="quizForm">
+            <div class="question">
+                <p>1. كيف تتعامل مع الأجهزة الكهربائية عند مغادرة الغرفة؟</p>
+                <div class="options"><label><input type="radio" name="q1" value="100"> ⚡ أفصلها تماماً من الكهرباء</label>
+                <label><input type="radio" name="q1" value="50"> 🔌 أتركها على وضع الاستعداد (Standby)</label>
+                <label><input type="radio" name="q1" value="0"> 💡 أتركها تعمل طوال الوقت</label></div>
+            </div>
+            <div class="question">
+                <p>2. ما نوع اللمبات المستخدمة في منزلك غالباً؟</p>
+                <div class="options"><label><input type="radio" name="q2" value="100"> 💚 LED موفرة للطاقة</label>
+                <label><input type="radio" name="q2" value="30"> 🟡 فلورسنت / موفرة قديمة</label>
+                <label><input type="radio" name="q2" value="0"> 🔴 لمبات عادية (متوهجة)</label></div>
+            </div>
+            <div class="question">
+                <p>3. عند شراء جهاز منزلي جديد، ما الذي تفضله؟</p>
+                <div class="options"><label><input type="radio" name="q3" value="100"> 🌱 أبحث عن أعلى كفاءة طاقة A+++</label>
+                <label><input type="radio" name="q3" value="40"> 📊 السعر الأرخص بغض النظر عن الاستهلاك</label>
+                <label><input type="radio" name="q3" value="10"> ❌ لا أنتبه لكفاءة الطاقة</label></div>
+            </div>
+            <div class="question">
+                <p>4. كيف تتصف عاداتك في استخدام الغسالة / غسالة الصحون؟</p>
+                <div class="options"><label><input type="radio" name="q4" value="100"> ✅ أشغلها فقط عندما تكون ممتلئة بالكامل</label>
+                <label><input type="radio" name="q4" value="30"> ⚠️ أحياناً أشغلها نصف ممتلئة</label>
+                <label><input type="radio" name="q4" value="0"> ❌ معظم الوقت نصف حمولة</label></div>
+            </div>
+            <div class="question">
+                <p>5. هل تستخدم وسائل تنقل صديقة للبيئة (مشي، دراجة، نقل عام) بدل السيارة الخاصة؟</p>
+                <div class="options"><label><input type="radio" name="q5" value="100"> 🚲 غالباً أو دائماً</label>
+                <label><input type="radio" name="q5" value="40"> 🚗 أحياناً</label>
+                <label><input type="radio" name="q5" value="0"> 🛑 نادراً أو أبداً</label></div>
+            </div>
+            <div class="question">
+                <p>6. هل شجعت عائلتك أو مجتمعك على ترشيد الطاقة أو استخدام الطاقة الشمسية؟</p>
+                <div class="options"><label><input type="radio" name="q6" value="100"> 🗣️ نعم، أنشر الوعي وأحفز الآخرين</label>
+                <label><input type="radio" name="q6" value="30"> 📢 قمت بمحاولة بسيطة</label>
+                <label><input type="radio" name="q6" value="0"> ❌ لم أفعل أبداً</label></div>
+            </div>
+            <button type="button" class="submit-quiz" id="submitQuiz">احسب نتيجتي</button>
+        </form>
+        <div id="quizResultArea" style="margin-top: 1rem;"></div>
+    </div>
+</div>
+
+<script>
+    // بيانات الخطوات (مثل السابق)
+    const stepsData = [
+        { step: 1, text: "استبدل اللمبات العادية بـ LED", tip: "توفر حتى 75% من الكهرباء." },
+        { step: 2, text: "افصل الأجهزة عند عدم الاستخدام", tip: "الوضع المستعد يستهلك كهرباء بدون فائدة." },
+        { step: 3, text: "استخدم الغسالة فقط عند امتلائها", tip: "توفير كبير في الكهرباء والماء." },
+        { step: 4, text: "فكر في تركيب سخان شمسي", tip: "يوفر 50-70% من فاتورة التسخين." },
+        { step: 5, text: "اشتري أجهزة A+++", tip: "استهلاك أقل وتوفير طويل الأمد." },
+        { step: 6, text: "شجع مجتمعك على الطاقة النظيفة", tip: "الوعي يخلق تغيير جماعي." }
+    ];
+    const stepsContainer = document.getElementById('stepsList');
+    function buildSteps() {
+        stepsContainer.innerHTML = '';
+        stepsData.forEach(item => {
+            const stepDiv = document.createElement('div'); stepDiv.className = 'step-item';
+            const numberSpan = document.createElement('span'); numberSpan.className = 'step-number'; numberSpan.innerText = item.step;
+            const textSpan = document.createElement('span'); textSpan.className = 'step-text'; textSpan.innerText = item.text;
+            const btn = document.createElement('button'); btn.className = 'step-btn'; btn.innerHTML = '<i class="fas fa-lightbulb"></i> اعرف المزيد';
+            const extraDiv = document.createElement('div'); extraDiv.className = 'extra-info'; extraDiv.innerHTML = `<i class="fas fa-info-circle"></i> ${item.tip}`;
+            btn.addEventListener('click', () => { extraDiv.style.display = extraDiv.style.display === 'none' ? 'block' : 'none'; btn.innerHTML = extraDiv.style.display === 'block' ? '<i class="fas fa-times"></i> إخفاء' : '<i class="fas fa-lightbulb"></i> اعرف المزيد'; });
+            stepDiv.appendChild(numberSpan); stepDiv.appendChild(textSpan); stepDiv.appendChild(btn); stepDiv.appendChild(extraDiv);
+            stepsContainer.appendChild(stepDiv);
+        });
+    }
+    buildSteps();
+
+    // modal logic
+    const modal = document.getElementById('quizModal');
+    const openBtn = document.getElementById('openQuizBtn');
+    const closeBtn = document.getElementById('closeModalBtn');
+    openBtn.onclick = () => { modal.style.display = 'flex'; document.getElementById('quizResultArea').innerHTML = ''; document.getElementById('quizForm').reset(); };
+    closeBtn.onclick = () => { modal.style.display = 'none'; };
+    window.onclick = (e) => { if(e.target === modal) modal.style.display = 'none'; };
+
+    const submitQuiz = document.getElementById('submitQuiz');
+    submitQuiz.addEventListener('click', () => {
+        const q1 = document.querySelector('input[name="q1"]:checked');
+        const q2 = document.querySelector('input[name="q2"]:checked');
+        const q3 = document.querySelector('input[name="q3"]:checked');
+        const q4 = document.querySelector('input[name="q4"]:checked');
+        const q5 = document.querySelector('input[name="q5"]:checked');
+        const q6 = document.querySelector('input[name="q6"]:checked');
+        if(!q1 || !q2 || !q3 || !q4 || !q5 || !q6) {
+            document.getElementById('quizResultArea').innerHTML = '<div class="quiz-result" style="background:#ffe0b5;">⚠️ الرجاء الإجابة على جميع الأسئلة الستة أولاً.</div>';
+            return;
+        }
+        let total = 0;
+        total += parseInt(q1.value);
+        total += parseInt(q2.value);
+        total += parseInt(q3.value);
+        total += parseInt(q4.value);
+        total += parseInt(q5.value);
+        total += parseInt(q6.value);
+        let percentage = total / 6;  // max 100
+        let resultHtml = `<div class="quiz-result"><h3>نتيجتك: ${Math.round(percentage)}%</h3><div class="progress-bar"><div class="progress-fill" style="width: ${percentage}%;"></div></div>`;
+        if(percentage >= 70) {
+            resultHtml += `<p style="color:#14532d; font-weight:bold;">🎉 رائع! أنت تساهم بشكل كبير في تحقيق الهدف السابع (طاقة نظيفة وبأسعار معقولة). 🌍✨ استمر في نشر الوعي وكن قدوة في مجتمعك.</p>`;
+        } else {
+            resultHtml += `<p style="color:#b45309;"><i class="fas fa-leaf"></i> لا تقلق، يمكنك تحسين أثرك! إليك نصائح مخصصة:</p><ul>`;
+            if(parseInt(q1?.value||0) < 70) resultHtml += `<li>🔌 <strong>افصل الأجهزة</strong> عند عدم الاستخدام بدلاً من تركها على standby.</li>`;
+            if(parseInt(q2?.value||0) < 70) resultHtml += `<li>💡 <strong>غيّر اللمبات العادية إلى LED</strong> لتوفير 75% من الكهرباء.</li>`;
+            if(parseInt(q3?.value||0) < 70) resultHtml += `<li>🏷️ <strong>اشترِ أجهزة بكفاءة A+++</strong> توفر المال والطاقة على المدى الطويل.</li>`;
+            if(parseInt(q4?.value||0) < 70) resultHtml += `<li>🧺 <strong>املأ الغسالة بالكامل</strong> قبل تشغيلها لتقليل الاستهلاك.</li>`;
+            if(parseInt(q5?.value||0) < 70) resultHtml += `<li>🚲 <strong>استخدم الدراجة أو المشي</strong> للمسافات القصيرة بدلاً من السيارة.</li>`;
+            if(parseInt(q6?.value||0) < 70) resultHtml += `<li>🗣️ <strong>نشر الوعي</strong> بين الأهل والأصدقاء عن الطاقة الشمسية والترشيد.</li>`;
+            resultHtml += `</ul><p>ابدأ بتطبيق خطوتين فقط وسترتفع نسبتك سريعاً 💚</p>`;
+        }
+        resultHtml += `<button id="retakeQuiz" style="background:#0f3b2c; color:white; border:none; padding:0.5rem 1rem; border-radius:2rem; margin-top:0.8rem; cursor:pointer;">إعادة الاختبار <i class="fas fa-redo-alt"></i></button></div>`;
+        document.getElementById('quizResultArea').innerHTML = resultHtml;
+        document.getElementById('retakeQuiz')?.addEventListener('click', () => {
+document.getElementById('quizForm').reset();
+            document.getElementById('quizResultArea').innerHTML = '';
+        });
+    });
+    // smooth scroll for nav
+    document.querySelectorAll('.nav-links a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const id = this.getAttribute('href').substring(1);
+            const el = document.getElementById(id);
+            if(el) el.scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+</script>
+</body>
+</html>
